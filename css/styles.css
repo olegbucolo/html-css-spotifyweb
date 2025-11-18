@@ -97,6 +97,8 @@ content: "\f007";
     content: "\f015";
 }
 
+
+
 .home::before,
 .search::before,
 .library::before,
@@ -167,14 +169,15 @@ content: "\f007";
 /* UPGRADE ################################################## */
 
 .upgrade {
+    z-index: 20;
     position: fixed;
     right: 0;
     left: var(--width-left-sidebar);
     height: var(--height-top-bottom-sidebar);
     background-color: rgba(9, 9, 17, 0.694);
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
+    /* display: flex; */
+    /* justify-content: flex-end; */
+    /* align-items: center; */
 }
 
 .upgrade a {
@@ -184,7 +187,13 @@ content: "\f007";
     font-weight: 600;
     letter-spacing: 1px;
     border-radius: 4rem;
+    position:absolute;
+    right: 5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
 }
+
 
 
 .player {
@@ -193,6 +202,7 @@ content: "\f007";
     width: 100%;
     height: var(--height-top-bottom-sidebar);
     background-color: rgb(37, 37, 37);
+    z-index: 20;
 }
 
 /* WRAPPER ################################################## */
@@ -200,7 +210,6 @@ content: "\f007";
 section.section__wrapper {
     font-size: 2rem;
     width: calc(100% - var(--width-left-sidebar));
-    height: 100rem;
     margin-left: var(--width-left-sidebar);
     padding: 8rem var(--spacing-medium);
 }
@@ -228,6 +237,12 @@ section.section__wrapper {
 
 .section{
     padding: var(--spacing-medium) 0;
+}
+
+.section a{
+    position: relative;
+    height: 100%;
+    display: block;
 }
 
 .section > h1{
@@ -265,5 +280,59 @@ section.section__wrapper {
 }
 
 .popular__artists img{
-    border-radius: 10rem;
+    border-radius: 20rem;
+}
+
+/* HOVER EFFECT ################################################## */
+
+.home:hover, .search:hover, .library:hover, .header a:hover, .navbar a:hover{
+    color: white;
+}
+
+.create__playlist:hover::before{
+    /* color: white; */
+    background-color: white;
+}
+
+.create__playlist:hover{
+    color: white;
+}
+
+.upgrade a:hover {
+    padding: calc(var(--spacing-small) + .2rem) calc(var(--spacing-large) + .4rem);
+    right: 4.6rem;
+    transition: all .4s ease;
+}
+
+.content__list a:hover img{
+    filter: brightness(.5);
+    transition: all .4s ease;
+}
+
+
+
+.content__list a .img{
+    position: relative
+}
+
+.content__list a .img::before{
+    font-family: "fontawesome";
+    position: absolute;
+    content: "\f002";
+    font-size: 5rem;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    z-index: 5;
+    opacity: 0;
+    transition: all .4s ease;
+    font-weight: 100;
+
+}
+
+.content__list a:hover .img::before{
+    opacity: 1;
+    transition: all .4s ease;
+
 }
