@@ -1,0 +1,58 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: var(--color-01);
+    height: 500vh;
+}
+
+html{
+    font-size: 10px;
+}
+
+:root{
+    /* bar sizes */
+    --width-left-sidebar: 18rem;
+    --height-bottom-sidebar: 8rem;
+    --height-upgrade-sidebar: 6rem;
+
+    /* debug-colors */
+    --color-01: rgb(144, 238, 100);
+    --color-02: rgb(132, 177, 100);
+    --color-03: rgb(235, 182, 100);
+    --color-04: rgb(240, 48, 100);
+    --color-05: rgb(5, 237, 100);
+}
+
+.header{
+    background-color: var(--color-03);
+    width: var(--width-left-sidebar);
+    height: calc(100vh - var(--height-bottom-sidebar));
+    position: fixed;
+}
+
+.upgrade{
+    position: fixed;
+    right: 0;
+    left: var(--width-left-sidebar);
+    height: var(--height-upgrade-sidebar);
+    background-color: var(--color-04);
+}
+
+.player{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: var(--height-bottom-sidebar);
+    background-color: var(--color-05);
+}
+
+
+
+main{
+    font-size: 2rem;
+}
