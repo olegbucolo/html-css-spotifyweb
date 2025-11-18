@@ -6,7 +6,6 @@
 
 ul{
     list-style: none;
-    
 }
 
 a{
@@ -26,8 +25,7 @@ html{
 :root{
     /* bars lengths */
     --width-left-sidebar: 18rem;
-    --height-bottom-sidebar: 8rem;
-    --height-upgrade-sidebar: 6rem;
+    --height-top-bottom-sidebar: 7rem;
     --spacing-small: 1rem;
     --spacing-medium: 2rem;
     --spacing-large: 3rem;
@@ -45,24 +43,78 @@ html{
 .header{
     background-color: black;
     width: var(--width-left-sidebar);
-    height: calc(100vh - var(--height-bottom-sidebar));
+    height: calc(100vh - var(--height-top-bottom-sidebar));
     position: fixed;
     font-weight: 600;
 }
 
-.header ul{
-    font-size: 1.4rem;
+.header ul, .navbar ul{
+    font-size: 1.2rem;
 }
 
-.header a{
+.header a, .header h2{
     padding: var(--spacing-small) 0;
     padding-left: var(--spacing-medium);
     display: block;
 }
 
-.logo{
-    height: var(--height-upgrade-sidebar);
-    /* background-color: red; */
+
+.header .logo__name{
+    position: relative;
+    font-size: 2.2rem;
+    color: white;
+    font-weight: 600;
+    letter-spacing: -.2rem;
+    height: var(--height-top-bottom-sidebar);
+    margin-top: var(--spacing-small);
+    padding-left: 5.4rem;
+}
+
+.home::before{
+    content: "\f015";
+}
+
+.home::before, .search::before, .library::before, .create__playlist::before, .logo__name::before{
+    
+    font-family: "fontAwesome";
+    font-weight: 900;
+    margin-right: 1rem;
+    font-size: 2rem;
+}
+
+.search::before{
+    content: "\f002";
+}
+
+.library::before{
+    content: "\e0bb";
+}
+
+.create__playlist{
+    font-size: 1.2rem;
+}
+
+.header h2{
+    color: white;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    padding-top: var(--spacing-medium);
+    padding-bottom: calc(var(--spacing-small) / 2);
+}
+
+.create__playlist::before{
+    content: "\2b";
+    color: black;
+    background-color: grey;
+    padding: .4rem;
+}
+
+.logo__name::before{
+    position: absolute;
+    content: "\f1bc";
+    font-size: 3rem;
+    font-weight: 100;
+    left: var(--spacing-medium);
 }
 
 /* UPGRADE ################################################## */
@@ -71,7 +123,7 @@ html{
     position: fixed;
     right: 0;
     left: var(--width-left-sidebar);
-    height: var(--height-upgrade-sidebar);
+    height: var(--height-top-bottom-sidebar);
     background-color: rgba(9, 9, 17, 0.694);
     display: flex;
     justify-content: flex-end;
@@ -87,22 +139,23 @@ html{
     border-radius: 4rem;
 }
 
+
 .player{
     position: fixed;
     bottom: 0;
     width: 100vw;
-    height: var(--height-bottom-sidebar);
-    /* background-color: var(--color-05); */
-    background-color: black;
+    height: var(--height-top-bottom-sidebar);
+    background-color: rgb(37, 37, 37);
 }
 
-
+/* WRAPPER ################################################## */
 
 .wrapper{
     font-size: 2rem;
-    /* background-color: red; */
     width: calc(100vw - var(--width-left-sidebar));
     height: 100rem;
     margin-left: var(--width-left-sidebar);
     padding: 9rem 2rem;
 }
+
+/* NAVBAR ################################################## */
