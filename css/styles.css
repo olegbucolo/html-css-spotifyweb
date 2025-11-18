@@ -57,11 +57,13 @@ html {
 
 .header .playlists {
     flex: 1;
+    overflow: auto;
 }
 
 .header a,
 .header h2,
-.install__app, .login__name {
+.install__app,
+.login__name {
     color: grey;
     padding: var(--spacing-small) 0;
     padding-left: var(--spacing-medium);
@@ -73,13 +75,13 @@ html {
     border-bottom: 1px solid grey;
 }
 
-.header .login__name{
+.header .login__name {
     padding-bottom: var(--spacing-small);
     padding-top: var(--spacing-small);
 }
 
 .login__name::before {
-content: "\f007";
+    content: "\f007";
 }
 
 .header .logo__name {
@@ -125,7 +127,8 @@ content: "\f007";
     font-size: 1rem;
 }
 
-.header h2, .login__name {
+.header h2,
+.login__name {
     color: white;
     font-size: 1rem;
     text-transform: uppercase;
@@ -152,14 +155,43 @@ content: "\f007";
     margin-top: -1.6rem;
 }
 
-.install__app::before{
+.selected__nav {
+    position: relative;
+}
+
+.selected__nav::before {
+    position: absolute;
+    content: "";
+    width: 50%;
+    height: 2px;
+    background-color: yellow;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -.4rem;
+}
+
+.selected__header {
+    position: relative;
+}
+
+.selected__header::after {
+    position: absolute;
+    content: "";
+    height: 100%;
+    width: 2px;
+    background-color: yellow;
+    left: 0;
+    bottom: -.4rem;
+}
+
+.install__app::before {
     content: "\f019";
     font-size: 1.2rem;
     font-weight: 100;
     margin-left: .2rem;
 }
 
-.header .login__name{
+.header .login__name {
     color: white;
     text-transform: capitalize;
     font-size: 1.2rem;
@@ -187,7 +219,7 @@ content: "\f007";
     font-weight: 600;
     letter-spacing: 1px;
     border-radius: 4rem;
-    position:absolute;
+    position: absolute;
     right: 5rem;
     top: 50%;
     transform: translateY(-50%);
@@ -202,8 +234,156 @@ content: "\f007";
     width: 100%;
     height: var(--height-top-bottom-sidebar);
     background-color: rgb(37, 37, 37);
+    padding: var(--spacing-small);
     z-index: 20;
 }
+
+/* PLAYER ################################################## */
+
+.player {
+    display: flex;
+    justify-content: space-between;
+}
+
+.player .left {
+    flex-shrink: 0;
+    width: var(--width-left-sidebar);
+    display: flex;
+    align-items: center;
+    position: relative;
+    color: grey;
+    font-weight: 600;
+}
+
+.player .right {
+    flex-shrink: 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.svg__menu,
+.svg__screen,
+.svg__volume {
+    flex: 1;
+}
+
+.slider__container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2rem;
+    width: 40%;
+    cursor: pointer;
+}
+
+.slider__container:hover ::-webkit-slider-thumb {
+    width: 1.4rem;
+    height: 1.4rem;
+}
+
+.player .right>* {
+    margin-right: var(--spacing-small);
+    font-size: 1.1rem;
+    color: white
+}
+
+.right .slider__container{
+    flex: 8;
+}
+
+.slider {
+    --value: 20;
+    --min: 0;
+    --max: 100;
+
+    -webkit-appearance: none;
+    width: 100%;
+    height: 3px;
+    border-radius: 4px;
+    outline: none;
+    background: linear-gradient(to right,
+            #bcbcbc 0%,
+            #bcbcbc calc((var(--value) - var(--min)) / (var(--max) - var(--min)) * 100%),
+            #666666 calc((var(--value) - var(--min)) / (var(--max) - var(--min)) * 100%),
+            #666666 100%);
+
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    background: #888;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.player .center {
+    text-align: center;
+    color: white;
+    flex: 1;
+}
+
+.player .center .top,
+.player .center .bottom {
+    height: 50%;
+    gap: var(--spacing-medium);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.player .center .top .fa-shuffle,
+.player .center .top .fa-rotate-right {
+    font-size: 1.2rem;
+}
+
+.player .center .top .fa-backward-step,
+.player .center .top .fa-forward-step {
+    font-size: 1.4rem;
+}
+
+.player .center .top .fa-circle-play {
+    font-size: 2.4rem;
+}
+
+.player .left .text {
+    flex: 2;
+}
+
+.player .left h2 {
+    color: white;
+    font-size: 1.2rem;
+}
+
+.player .img {
+    height: 100%;
+    flex: 1;
+}
+
+.player img {
+    height: 100%;
+}
+
+.player .left::before,
+.player .left::after {
+    position: absolute;
+    font-family: fontawesome;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.4rem;
+    font-weight: 800;
+}
+
+.player .left::before {
+    content: "\f07b";
+    right: var(--spacing-small);
+}
+
+.player .left::after {
+    content: "\f004";
+    right: 3.8rem;
+}
+
 
 /* WRAPPER ################################################## */
 
@@ -235,87 +415,90 @@ section.section__wrapper {
 
 /* RECENTLY PLAYED & CO. ################################################## */
 
-.section{
+.section {
     padding: var(--spacing-medium) 0;
 }
 
-.section a{
+.section a {
     position: relative;
     height: 100%;
     display: block;
 }
 
-.section > h1{
+.section>h1 {
     font-size: 1.7rem;
     color: white;
 }
 
-.section ul h3{
+.section ul h3 {
     font-size: 1.2rem;
     color: white;
     margin-top: calc(var(--spacing-small) - .4rem);
 }
 
-.section ul p, .section > p{
+.section ul p,
+.section>p {
     color: grey;
     font-size: 1rem;
     font-weight: 600;
     margin-top: calc(var(--spacing-small) - .4rem);
 }
 
-.section ul:not(.navbar ul){
+.section ul:not(.navbar ul) {
     margin-top: var(--spacing-medium);
     display: flex;
 }
 
-.section ul li:not(.navbar ul li){
+.section ul li:not(.navbar ul li) {
     width: calc(100% /6);
     text-align: center;
     margin-right: calc(var(--spacing-medium) / 2);
-    
+
 }
 
-.section img{
-    width: 100%;   
+.section img {
+    width: 100%;
 }
 
-.popular__artists img{
+.popular__artists img {
     border-radius: 20rem;
 }
 
 /* HOVER EFFECT ################################################## */
 
-.home:hover, .search:hover, .library:hover, .header a:hover, .navbar a:hover{
+.home:hover,
+.search:hover,
+.library:hover,
+.header a:hover,
+.navbar a:hover {
     color: white;
 }
 
-.create__playlist:hover::before{
+.create__playlist:hover::before {
     /* color: white; */
     background-color: white;
 }
 
-.create__playlist:hover{
+.create__playlist:hover {
     color: white;
 }
 
 .upgrade a:hover {
     padding: calc(var(--spacing-small) + .2rem) calc(var(--spacing-large) + .4rem);
     right: 4.6rem;
-    transition: all .4s ease;
 }
 
-.content__list a:hover img{
+
+.content__list a:hover img {
     filter: brightness(.5);
     transition: all .4s ease;
 }
 
-
-
-.content__list a .img{
+.content__list a .img {
     position: relative
 }
 
-.content__list a .img::before{
+.content__list a .img::before {
     font-family: "fontawesome";
     position: absolute;
     content: "\f002";
@@ -331,8 +514,31 @@ section.section__wrapper {
 
 }
 
-.content__list a:hover .img::before{
+.content__list a:hover .img::before {
     opacity: 1;
     transition: all .4s ease;
 
+}
+
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+
+/* scrollbar width */
+.playlists::-webkit-scrollbar {
+    width: 6px;
+}
+
+/* scrollbar track */
+.playlists::-webkit-scrollbar-track {
+    /* background: grey; */
+}
+
+/* scroll thumb (the draggable bar) */
+.playlists::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+
+/* hover effect */
+.playlists::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }
