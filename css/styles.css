@@ -78,8 +78,6 @@ html {
     padding-top: var(--spacing-small);
 }
 
-
-
 .login__name::before {
 content: "\f007";
 }
@@ -94,7 +92,6 @@ content: "\f007";
     margin-top: var(--spacing-small);
     padding-left: 5.4rem;
 }
-
 
 .home::before {
     content: "\f015";
@@ -200,12 +197,12 @@ content: "\f007";
 
 /* WRAPPER ################################################## */
 
-.wrapper {
+section.section__wrapper {
     font-size: 2rem;
     width: calc(100% - var(--width-left-sidebar));
     height: 100rem;
     margin-left: var(--width-left-sidebar);
-    padding: 8rem var(--spacing-small);
+    padding: 8rem var(--spacing-medium);
 }
 
 /* NAVBAR ################################################## */
@@ -224,4 +221,49 @@ content: "\f007";
 
 .navbar ul li {
     margin: 0 var(--spacing-small);
+}
+
+
+/* RECENTLY PLAYED & CO. ################################################## */
+
+.section{
+    padding: var(--spacing-medium) 0;
+}
+
+.section > h1{
+    font-size: 1.7rem;
+    color: white;
+}
+
+.section ul h3{
+    font-size: 1.2rem;
+    color: white;
+    margin-top: calc(var(--spacing-small) - .4rem);
+}
+
+.section ul p, .section > p{
+    color: grey;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-top: calc(var(--spacing-small) - .4rem);
+}
+
+.section ul:not(.navbar ul){
+    margin-top: var(--spacing-medium);
+    display: flex;
+}
+
+.section ul li:not(.navbar ul li){
+    width: calc(100% /6);
+    text-align: center;
+    margin-right: calc(var(--spacing-medium) / 2);
+    
+}
+
+.section img{
+    width: 100%;   
+}
+
+.popular__artists img{
+    border-radius: 10rem;
 }
