@@ -24,9 +24,9 @@ html{
 
 :root{
     /* bars lengths */
-    --width-left-sidebar: 18rem;
+    --width-left-sidebar: 20rem;
     --height-top-bottom-sidebar: 7rem;
-    --spacing-small: 1rem;
+    --spacing-small: .8rem;
     --spacing-medium: 2rem;
     --spacing-large: 3rem;
 
@@ -49,7 +49,7 @@ html{
 }
 
 .header ul, .navbar ul{
-    font-size: 1.2rem;
+    font-size: 1rem;
 }
 
 .header a, .header h2{
@@ -70,6 +70,7 @@ html{
     padding-left: 5.4rem;
 }
 
+
 .home::before{
     content: "\f015";
 }
@@ -79,7 +80,7 @@ html{
     font-family: "fontAwesome";
     font-weight: 900;
     margin-right: 1rem;
-    font-size: 2rem;
+    font-size: 1.6rem;
 }
 
 .search::before{
@@ -91,12 +92,12 @@ html{
 }
 
 .create__playlist{
-    font-size: 1.2rem;
+    font-size: 1rem;
 }
 
 .header h2{
     color: white;
-    font-size: 1.2rem;
+    font-size: 1rem;
     text-transform: uppercase;
     padding-top: var(--spacing-medium);
     padding-bottom: calc(var(--spacing-small) / 2);
@@ -117,6 +118,10 @@ html{
     left: var(--spacing-medium);
 }
 
+.header .home{
+    margin-top: -1.6rem;
+}
+
 /* UPGRADE ################################################## */
 
 .upgrade{
@@ -133,7 +138,7 @@ html{
 .upgrade a{
     border: 1px solid white;
     padding: var(--spacing-small) var(--spacing-large);
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: 600;
     letter-spacing: 1px;
     border-radius: 4rem;
@@ -143,7 +148,7 @@ html{
 .player{
     position: fixed;
     bottom: 0;
-    width: 100vw;
+    width: 100%;
     height: var(--height-top-bottom-sidebar);
     background-color: rgb(37, 37, 37);
 }
@@ -152,10 +157,26 @@ html{
 
 .wrapper{
     font-size: 2rem;
-    width: calc(100vw - var(--width-left-sidebar));
+    width: calc(100% - var(--width-left-sidebar));
     height: 100rem;
     margin-left: var(--width-left-sidebar);
-    padding: 9rem 2rem;
+    padding: 8rem 2rem;
 }
 
 /* NAVBAR ################################################## */
+
+.navbar ul *{
+    display: inline-block;
+}
+
+.navbar a{
+    font-weight: 600;
+}
+
+.navbar ul{
+    text-align:center;  
+}
+
+.navbar ul li{
+    margin: 0 var(--spacing-small);
+}
