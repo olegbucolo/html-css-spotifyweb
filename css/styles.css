@@ -4,20 +4,33 @@
     box-sizing: border-box;
 }
 
+ul{
+    list-style: none;
+    
+}
+
+a{
+    text-decoration: none;
+    color: grey;
+}
+
 body{
-    background-color: var(--color-01);
-    height: 500vh;
+    background-color: rgb(20, 23, 33);
 }
 
 html{
     font-size: 10px;
+    font-family: "Montserrat", sans-serif;
 }
 
 :root{
-    /* bar sizes */
+    /* bars lengths */
     --width-left-sidebar: 18rem;
     --height-bottom-sidebar: 8rem;
     --height-upgrade-sidebar: 6rem;
+    --spacing-small: 1rem;
+    --spacing-medium: 2rem;
+    --spacing-large: 3rem;
 
     /* debug-colors */
     --color-01: rgb(144, 238, 100);
@@ -27,32 +40,69 @@ html{
     --color-05: rgb(5, 237, 100);
 }
 
+/* LEFT HEADER ################################################## */
+
 .header{
-    background-color: var(--color-03);
+    background-color: black;
     width: var(--width-left-sidebar);
     height: calc(100vh - var(--height-bottom-sidebar));
     position: fixed;
+    font-weight: 600;
 }
+
+.header ul{
+    font-size: 1.4rem;
+}
+
+.header a{
+    padding: var(--spacing-small) 0;
+    padding-left: var(--spacing-medium);
+    display: block;
+}
+
+.logo{
+    height: var(--height-upgrade-sidebar);
+    /* background-color: red; */
+}
+
+/* UPGRADE ################################################## */
 
 .upgrade{
     position: fixed;
     right: 0;
     left: var(--width-left-sidebar);
     height: var(--height-upgrade-sidebar);
-    background-color: var(--color-04);
+    background-color: rgba(9, 9, 17, 0.694);
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.upgrade a{
+    border: 1px solid white;
+    padding: var(--spacing-small) var(--spacing-large);
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    border-radius: 4rem;
 }
 
 .player{
     position: fixed;
     bottom: 0;
-    left: 0;
-    right: 0;
+    width: 100vw;
     height: var(--height-bottom-sidebar);
-    background-color: var(--color-05);
+    /* background-color: var(--color-05); */
+    background-color: black;
 }
 
 
 
-main{
+.wrapper{
     font-size: 2rem;
+    /* background-color: red; */
+    width: calc(100vw - var(--width-left-sidebar));
+    height: 100rem;
+    margin-left: var(--width-left-sidebar);
+    padding: 9rem 2rem;
 }
