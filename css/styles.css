@@ -70,14 +70,9 @@ html {
     display: block;
 }
 
-.install__app {
+.header .install__app {
     padding-bottom: var(--spacing-medium);
     border-bottom: 1px solid grey;
-}
-
-.header .login__name {
-    padding-bottom: var(--spacing-small);
-    padding-top: var(--spacing-small);
 }
 
 .login__name::before {
@@ -196,6 +191,8 @@ html {
     text-transform: capitalize;
     font-size: 1.2rem;
     font-weight: 700;
+    padding-bottom: var(--spacing-small);
+    padding-top: var(--spacing-small);
 }
 
 /* UPGRADE ################################################## */
@@ -207,9 +204,6 @@ html {
     left: var(--width-left-sidebar);
     height: var(--height-top-bottom-sidebar);
     background-color: rgba(9, 9, 17, 0.694);
-    /* display: flex; */
-    /* justify-content: flex-end; */
-    /* align-items: center; */
 }
 
 .upgrade a {
@@ -229,6 +223,8 @@ html {
 
 
 .player {
+    display: flex;
+    justify-content: space-between;
     position: fixed;
     bottom: 0;
     width: 100%;
@@ -236,27 +232,24 @@ html {
     background-color: rgb(37, 37, 37);
     padding: var(--spacing-small);
     z-index: 20;
+    column-gap: var(--spacing-small);
 }
 
 /* PLAYER ################################################## */
 
-.player {
-    display: flex;
-    justify-content: space-between;
-}
-
 .player .left {
-    flex-shrink: 0;
+    flex-shrink: 1;
     width: var(--width-left-sidebar);
     display: flex;
     align-items: center;
     position: relative;
     color: grey;
     font-weight: 600;
+
 }
 
 .player .right {
-    flex-shrink: 0;
+    flex-shrink: 1;
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -288,7 +281,7 @@ html {
     color: white
 }
 
-.right .slider__container{
+.right .slider__container {
     flex: 8;
 }
 
@@ -320,7 +313,8 @@ html {
 .player .center {
     text-align: center;
     color: white;
-    flex: 1;
+    flex: 1 2 0;
+
 }
 
 .player .center .top,
@@ -358,10 +352,13 @@ html {
 .player .img {
     height: 100%;
     flex: 1;
+    margin-right: var(--spacing-small);
+    overflow: hidden;
+    ;
 }
 
 .player img {
-    height: 100%;
+    width: 100%;
 }
 
 .player .left::before,
@@ -389,7 +386,6 @@ html {
 
 section.section__wrapper {
     font-size: 2rem;
-    width: calc(100% - var(--width-left-sidebar));
     margin-left: var(--width-left-sidebar);
     padding: 8rem var(--spacing-medium);
 }
@@ -409,7 +405,7 @@ section.section__wrapper {
 }
 
 .navbar ul li {
-    margin: 0 var(--spacing-small);
+    margin: 0 var(--spacing-small) var(--spacing-small);
 }
 
 
@@ -452,8 +448,7 @@ section.section__wrapper {
 .section ul li:not(.navbar ul li) {
     width: calc(100% /6);
     text-align: center;
-    margin-right: calc(var(--spacing-medium) / 2);
-
+    margin: .5rem;
 }
 
 .section img {
@@ -541,4 +536,112 @@ section.section__wrapper {
 /* hover effect */
 .playlists::-webkit-scrollbar-thumb:hover {
     background: #555;
+}
+
+/* RESPONSIVE ################################################## */
+
+@media screen and (max-width: 768px) {
+    .section ul li:not(.navbar ul li) {
+        width: calc((100% /4) - 1rem);
+    }
+
+    .section ul:not(.navbar ul) {
+        flex-wrap: wrap;
+        row-gap: var(--spacing-medium);
+    }
+
+    .player .left::after {
+        right: var(--spacing-small);
+        top: 30%;
+    }
+
+    .player .left::before {
+        /* right: med; */
+        top: 70%;
+    }
+
+}
+
+@media screen and (max-width: 480px) {
+    .section ul li:not(.navbar ul li) {
+        width: calc((100% /2) - 1rem);
+    }
+
+    .player .center .top .fa-shuffle, .player .center .top .fa-rotate-right{
+        font-size: 1rem;
+    }
+
+    .player .center .top .fa-backward-step, .player .center .top .fa-forward-step{
+        font-size: 1.2rem;
+    }
+
+    .player .center .top .fa-circle-play{
+        font-size: 2rem;
+    }
+
+    .player .center .top,
+    .player .center .bottom {
+        gap: var(--spacing-small);
+    }
+}
+
+
+@media screen and (max-width: 450px) {
+
+    .header .logo__name,
+    .header .home,
+    .header .search,
+    .header .library,
+    .header .login__name,
+    .header .install__app {
+        font-size: 0;
+    }
+
+    .header>h2,
+    .header .create__playlist,
+    .header .playlists * {
+        display: none;
+    }
+
+    .logo__name::before{
+        font-size: 2rem;
+    }
+
+    .header{
+        width: 6rem;
+    }
+
+    section.section__wrapper{
+        margin-left: 6rem;
+    }
+
+    .upgrade{
+        left: 6rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .upgrade a{
+        position: relative;
+        top: unset;
+        transform: none;
+        right:unset;
+    }
+
+}
+
+@media screen and (max-width: 415px) {
+    .player .left{
+        flex-shrink: 2;
+    }
+
+    .player .left .text{
+        display: none;
+    }
+
+    .player .img{
+        margin-right: 3rem;
+    }
+
 }
